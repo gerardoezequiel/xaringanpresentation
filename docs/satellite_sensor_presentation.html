@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Landsat 8: Thermal Imaging &amp; Urban Heat Islands</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gerardo Ezequiel Martin Carreno" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Landsat 8: Thermal Imaging &amp; Urban Heat Islands
+]
+.subtitle[
+## Focus on the Thermal Infrared Sensor (TIRS)
+]
+.author[
+### Gerardo Ezequiel Martin Carreno
+]
+
+---
+
+
+
+
+&lt;!-- Slide 1: Cover --&gt;
+# Landsat 8: Thermal Vision for UHI
+
+&lt;video autoplay loop muted playsinline style="max-width: 100%; height: auto; position: fixed; top: 11.5%; left: 0;"&gt;
+  &lt;source src="https://landsat.gsfc.nasa.gov/wp-content/uploads/2023/09/L9-flyover-2.mp4" type="video/mp4"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+
+---
+
+&lt;!-- Slide 2: Full Screen Video --&gt;
+&lt;video controls playsinline style="width: 100vw; height: 80vh; object-fit: cover; position: fixed; top: 0; left: 0;" data-remark-pause="true"&gt;
+  &lt;source src="https://usgs-ocapsv2-public-output-media.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/l8swath/MP4/l8swath.mp4#t=8" type="video/mp4"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+
+---
+
+&lt;!-- Slide 3: Mission Overview --&gt;
+# Mission Overview
+
+.pull-left[
+**Launch &amp; Objective:**
+- Launched: Feb 11, 2013
+- Mission: Earth observation for tracking environmental changes
+- Global coverage of land surfaces
+
+**Orbit &amp; Coverage:**
+- Altitude: 705 km
+- Orbit: Sun-synchronous, ~10:00 AM equator crossing
+- Revisit cycle: 16 days
+- Swath width: 185 km
+]
+
+.pull-right[
+**Key Capabilities:**
+- ~740 scenes captured per day
+- Free, open data access
+- 12-bit radiometric depth
+- 12 m geodetic accuracy
+
+![Timeline of the Landsat Program](docs/img/timeline.png)
+.center[Timeline of the Landsat Program – Credit: &lt;a name=cite-TimelineLandsatScience2021&gt;&lt;/a&gt;[ (2025)](#bib-TimelineLandsatScience2021)]
+]
+
+---
+
+&lt;!-- Slide 4: TIRS Details --&gt;
+# TIRS: Thermal Infrared Sensor
+
+.pull-left[
+**Core Technology:**
+- Developed by NASA Goddard Space Flight Center
+- Employs Quantum Well Infrared Photodetectors (QWIP) technology semiconductor layers.
+- Pushbroom sensor design
+
+**Spectral Bands:**
+- **Band 10 (TIRS1):** 10.6 – 11.19 µm
+  - Primary band for surface temperature retrieval.
+- **Band 11 (TIRS2):** 11.5 – 12.51 µm
+  - Used in conjunction with Band 10 for atmospheric correction (split-window technique).
+- **Spatial Resolution:**
+  - 100-meter native resolution
+  - Resampled to 30 meters in delivered data products for consistency with other Landsat 8 bands.
+]
+
+.pull-right[
+![TIRS Design Diagram](docs/img/TIRS.png)
+.center[TIRS Design – Credit: &lt;a name=cite-barsiLandsat8ThermalInfrared2014&gt;&lt;/a&gt;[Barsi, Schott, Hook, Raqueno, Markham, and Radocinski (2025)](#bib-barsiLandsat8ThermalInfrared2014)]
+]
+
+---
+
+&lt;!-- Slide 5: UHI Analysis --&gt;
+# Urban Heat Island Analysis
+
+.pull-left[
+**Data Processing Workflow:**
+1. **Scene Selection:** Choose summer daytime scenes with clear skies.
+2. **Thermal Calibration:** Convert digital numbers to radiance, then to brightness temperature.
+3. **Corrections:** Apply atmospheric and emissivity corrections (split-window technique using Bands 10 &amp; 11).
+4. **Surface Temperature Retrieval:** Calculate Land Surface Temperature (LST) using the corrected brightness temperatures.
+5. **Validation:** Compare derived LST with ground-based measurements if available.
+]
+
+.pull-right[
+**Analysis Approach:**
+- Generate LST maps to visualize temperature differences.
+- Compare urban vs. rural areas.
+- Use NDVI (from OLI Bands 4 &amp; 5) to correlate vegetation with lower temperatures.
+- Identify UHI "hot spots" within cities.
+
+![LST Map Example](docs/img/ST_Yellowstone.jpg)
+.center[LST map example – Credit: &lt;a name=cite-LandsatCollection22024&gt;&lt;/a&gt;[ (2025)](#bib-LandsatCollection22024)]
+]
+
+---
+
+&lt;!-- Slide 6: Urban Applications --&gt;
+# Urban Applications
+
+.pull-left[
+**City Heat Mapping:**
+- Example: NYC heat vulnerability mapping.
+- Identify hot spots in dense urban centers vs. cooler suburban areas.
+- Analyse temperature variations across different land cover types (e.g., impervious surfaces, green spaces).
+
+**Impact Assessment:**
+- Evaluate cooling effects of green infrastructure (e.g., green roofs, parks, urban forests).
+- Inform urban policy and planning decisions related to heat mitigation and adaptation.
+- Assess the effectiveness of different cooling strategies (e.g., increasing tree canopy cover, using high-albedo materials).
+- Quantify the relationship between urban morphology (building density, street canyons) and temperature.
+]
+
+.pull-right[
+**Case Study: NYC**
+- Landsat 8 reveals significant temperature variations across city neighborhoods.
+- Data supports initiatives for urban cooling strategies.
+
+![NYC Heat Map](docs/img/NYC_heat.jpg)
+.center[NYC Urban Heat Map – Credit: &lt;a name=cite-UrbanHeatNew2022&gt;&lt;/a&gt;[ (2025)](#bib-UrbanHeatNew2022)]
+]
+
+---
+
+&lt;!-- Slide 7: Technical Challenges --&gt;
+# Technical Challenges
+
+.pull-left[
+**Atmospheric &amp; Calibration Challenges:**
+
+- **Atmospheric Effects:** Water vapor and aerosols affect thermal measurement accuracy, causing a ~1K error even after corrections.
+
+- **Stray Light Correction:** TIRS Band 11 initially had errors from stray light, corrected by an algorithm in later data versions.
+
+- **Data Version:** Use Landsat Collection 2 data for accurate analysis, as it includes the stray light correction and other improvements.
+]
+
+.pull-right[
+**Spatial &amp; Temporal Limits:**
+- 100 m native thermal resolution can mix different surface types.
+- 16-day revisit may miss short-term events.
+- Cloud cover can obstruct observations during critical periods.
+
+![Atmospheric Correction](docs/img/atms_correction_landsat8.png)
+.center[Atmospheric Correction – Credit: &lt;a name=cite-chenLandUseLand2010&gt;&lt;/a&gt;[Chen and Wang (2025)](#bib-chenLandUseLand2010)]
+]
+
+---
+
+&lt;!-- Slide 8: Future Prospects --&gt;
+# Future Directions
+
+.pull-left[
+**Landsat 9 TIRS-2 Enhancements:**
+- Launched in September 2021, Landsat 9's TIRS-2 significantly reduces stray light (by 40×), a major improvement over Landsat 8's TIRS.
+- Features enhanced redundancy and improved calibration, particularly for Band 11, leading to more accurate temperature measurements.
+
+**Landsat Next Advances:**
+- Planned for launch in the late 2020s, Landsat Next will feature a superspectral thermal imager.
+- It is designed to provide significantly higher spatial resolution (down to 60 meters for thermal bands).
+- Landsat Next aims for a temporal revisit of less than six days, enabling more frequent monitoring of thermal dynamics.
+]
+
+.pull-right[
+**Integration &amp; Next Steps:**
+- Combined use of Landsat 8 and 9 for an ~8-day revisit.
+- Integration with Sentinel-3 SLSTR and future Landsat Next for improved thermal resolution.
+- Potential for real-time urban heat monitoring using cloud platforms.
+
+![Landsat 9 TIRS-2 Design](docs/img/TIRS-2.jpeg)
+.center[TIRS-2 Design – Credit: &lt;a name=cite-TIRS2DesignLandsat2021a&gt;&lt;/a&gt;[ (2025)](#bib-TIRS2DesignLandsat2021a)]
+]
+
+---
+
+&lt;!-- Slide 9: Personal Reflection --&gt;
+# Reflection
+
+.pull-left[Working with Landsat 8's TIRS has been really fun! Landsat 8, launched in 2013, carries foward a fascinating history of Earth observation. I was impressed by how its advanced thermal sensors, with dual thermal bands and 12-bit radiometric resolution, can capture even subtle differences in surface temperatures helping tackling UHI.
+
+The continuity of Landsat data over more than 40 years offers a unique perspective on how cities have grown and how environmental challenges have evolved. It's fascinating to think that today's high-quality thermal imagery is built upon decades of past missions, each contributing to our collective understanding of Earth's surface.]
+
+
+.pull-right[![Summer Heat Spots with Landsat-8 Thermal Satellite data](docs/img/london_heat.png)
+[Summer Heat Spots with Landsat-8 Thermal Satellite data – Credit: &lt;a name=cite-MajorSummerHeat&gt;&lt;/a&gt;[ (2025)](#bib-MajorSummerHeat)]]
+---
+
+&lt;!-- Slide 10: References --&gt;
+# References
+
+&lt;a name=bib-TIRS2DesignLandsat2021a&gt;&lt;/a&gt;[TIRS-2 Design | Landsat
+Science](#cite-TIRS2DesignLandsat2021a) (2025). _TIRS-2 Design |
+Landsat Science_.
+https://landsat.gsfc.nasa.gov/satellites/landsat-9/landsat-9-instruments/tirs-2-design/.
+
+&lt;a name=bib-LandsatCollection22024&gt;&lt;/a&gt;[Landsat Collection 2 Surface
+Temperature | U.S. Geological Survey](#cite-LandsatCollection22024)
+(2025). _Landsat Collection 2 Surface Temperature | U.S. Geological
+Survey_.
+https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature.
+
+&lt;a name=bib-MajorSummerHeat&gt;&lt;/a&gt;[Major Summer Heat Spots Using
+Landsat-8 Thermal Satellite Data - London
+Datastore](#cite-MajorSummerHeat) (2025). _Major Summer Heat Spots
+Using Landsat-8 Thermal Satellite Data - London Datastore_.
+
+&lt;a name=bib-TimelineLandsatScience2021&gt;&lt;/a&gt;[Timeline | Landsat
+Science](#cite-TimelineLandsatScience2021) (2025). _Timeline | Landsat
+Science_. https://landsat.gsfc.nasa.gov/satellites/timeline/.
+
+&lt;a name=bib-UrbanHeatNew2022&gt;&lt;/a&gt;[Urban Heat New York City | U.S.
+Geological Survey](#cite-UrbanHeatNew2022) (2025). _Urban Heat New York
+City | U.S. Geological Survey_.
+https://www.usgs.gov/media/images/urban-heat-new-york-city.
+
+&lt;a name=bib-barsiLandsat8ThermalInfrared2014&gt;&lt;/a&gt;[Barsi, J., J. Schott,
+S. Hook, et al.](#cite-barsiLandsat8ThermalInfrared2014) (2025).
+"Landsat-8 Thermal Infrared Sensor (TIRS) Vicarious Radiometric
+Calibration". In: _Remote Sensing_ 6.11, pp. 11607-11626.
+
+&lt;a name=bib-chenLandUseLand2010&gt;&lt;/a&gt;[Chen, Z. and J.
+Wang](#cite-chenLandUseLand2010) (2025). "Land Use and Land Cover
+Change Detection Using Satellite Remote Sensing Techniques in the
+Mountainous Three Gorges Area, China". In: _International Journal of
+Remote Sensing_ 31.6, pp. 1519-1542.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="docs/macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-dark",
+"highlightLines": true,
+"ratio": "16:9",
+"chakra": "libs/remark-latest.min.js"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

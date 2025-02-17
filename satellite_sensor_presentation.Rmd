@@ -30,6 +30,9 @@ BibOptions(check.entries = FALSE,
 myBib <- ReadBib("./references.bib", check = FALSE)
 
 library(knitcitations)
+
+knitr::opts_knit$set(base.dir = here::here())
+knitr::opts_chunk$set(fig.path = "docs/img/")
 ```
 
 <!-- Slide 1: Cover -->
@@ -73,7 +76,7 @@ library(knitcitations)
 - 12-bit radiometric depth
 - 12 m geodetic accuracy
 
-![Timeline of the Landsat Program](img/timeline.png)
+![Timeline of the Landsat Program](docs/img/timeline.png)
 .center[Timeline of the Landsat Program – Credit: `r Citet(myBib, "TimelineLandsatScience2021")`]
 ]
 
@@ -99,7 +102,7 @@ library(knitcitations)
 ]
 
 .pull-right[
-![TIRS Design Diagram](img/TIRS.png)
+![TIRS Design Diagram](docs/img/TIRS.png)
 .center[TIRS Design – Credit: `r Citet(myBib, "barsiLandsat8ThermalInfrared2014")`]
 ]
 
@@ -124,7 +127,7 @@ library(knitcitations)
 - Use NDVI (from OLI Bands 4 & 5) to correlate vegetation with lower temperatures.
 - Identify UHI "hot spots" within cities.
 
-![LST Map Example](img/ST_Yellowstone.jpg)
+![LST Map Example](docs/img/ST_Yellowstone.jpg)
 .center[LST map example – Credit: `r Citet(myBib, "LandsatCollection22024")`]
 ]
 
@@ -151,7 +154,7 @@ library(knitcitations)
 - Landsat 8 reveals significant temperature variations across city neighborhoods.
 - Data supports initiatives for urban cooling strategies.
 
-![NYC Heat Map](img/NYC_heat.jpg)
+![NYC Heat Map](docs/img/NYC_heat.jpg)
 .center[NYC Urban Heat Map – Credit: `r Citet(myBib, "UrbanHeatNew2022")`]
 ]
 
@@ -176,7 +179,7 @@ library(knitcitations)
 - 16-day revisit may miss short-term events.
 - Cloud cover can obstruct observations during critical periods.
 
-![Atmospheric Correction](img/atms_correction_landsat8.png)
+![Atmospheric Correction](docs/img/atms_correction_landsat8.png)
 .center[Atmospheric Correction – Credit: `r Citet(myBib, "chenLandUseLand2010")`]
 ]
 
@@ -202,7 +205,7 @@ library(knitcitations)
 - Integration with Sentinel-3 SLSTR and future Landsat Next for improved thermal resolution.
 - Potential for real-time urban heat monitoring using cloud platforms.
 
-![Landsat 9 TIRS-2 Design](img/TIRS-2.jpeg)
+![Landsat 9 TIRS-2 Design](docs/img/TIRS-2.jpeg)
 .center[TIRS-2 Design – Credit: `r Citet(myBib, "TIRS2DesignLandsat2021a")`]
 ]
 
@@ -216,7 +219,7 @@ library(knitcitations)
 The continuity of Landsat data over more than 40 years offers a unique perspective on how cities have grown and how environmental challenges have evolved. It's fascinating to think that today's high-quality thermal imagery is built upon decades of past missions, each contributing to our collective understanding of Earth's surface.]
 
 
-.pull-right[![Summer Heat Spots with Landsat-8 Thermal Satellite data](img/london_heat.png)
+.pull-right[![Summer Heat Spots with Landsat-8 Thermal Satellite data](docs/img/london_heat.png)
 [Summer Heat Spots with Landsat-8 Thermal Satellite data – Credit: `r Citet(myBib, "MajorSummerHeat")`]]
 ---
 
