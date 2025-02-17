@@ -8,17 +8,24 @@ jobs:
     
     - name: Setup R
       uses: r-lib/actions/setup-r@v2
-      
+      with:
+        r-version: '4.4'  # Match your local R version
+    
+    - name: Setup Pandoc
+      uses: r-lib/actions/setup-pandoc@v2
+      with:
+        pandoc-version: '2.7.3'  # Minimum required version
+    
     - name: Install dependencies
       run: |
-        Rscript -e 'install.packages(c("rmarkdown", "xaringan"))'
+        Rscript -e 'install.packages(c("rmarkdown", "xaringan", "RefManageR"))'
         
     - name: Render presentation
       run: |
         Rscript -e 'rmarkdown::render("satellite_sensor_presentation.Rmd", output_file = "index.html", output_dir = "docs")'
-        touch .nojekyll
+        touch docs/.nojekyll
         
-    - name: Deploy
+    - name: Deploy to GH Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
