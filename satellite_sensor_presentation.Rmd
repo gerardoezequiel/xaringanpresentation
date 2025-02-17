@@ -45,11 +45,13 @@ knitr::opts_chunk$set(fig.path = "docs/img/")
 
 ---
 
-<!-- Slide 2: Full Screen Video -->
-<video controls playsinline style="width: 100vw; height: 80vh; object-fit: cover; position: fixed; top: 0; left: 0;" data-remark-pause="true">
-  <source src="https://usgs-ocapsv2-public-output-media.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/l8swath/MP4/l8swath.mp4#t=8" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<!-- Slide 2: Full Screen Video (Centered) -->
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <video controls playsinline style="width: auto; max-width: 100%; max-height: 80vh;" data-remark-pause="true">
+    <source src="https://usgs-ocapsv2-public-output-media.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/l8swath/MP4/l8swath.mp4#t=8" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
 ---
 
