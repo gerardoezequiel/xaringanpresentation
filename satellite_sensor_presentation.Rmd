@@ -5,8 +5,8 @@ author: "Gerardo Ezequiel Martin Carreno"
 bibliography: references.bib
 output:
   xaringan::moon_reader:
-    css: ["default", "metropolis", "metropolis-fonts"]
     lib_dir: "docs/libs"
+    css: ["default", "metropolis", "metropolis-fonts"]
     nature:
       highlightStyle: solarized-dark
       highlightLines: true
