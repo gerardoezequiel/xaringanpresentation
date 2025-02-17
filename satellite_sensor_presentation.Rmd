@@ -6,13 +6,14 @@ bibliography: references.bib
 output:
   xaringan::moon_reader:
     css: ["default", "metropolis", "metropolis-fonts"]
-    lib_dir: libs
+    lib_dir: "docs/libs"
     nature:
       highlightStyle: solarized-dark
       highlightLines: true
       ratio: "16:9"
-      beforeInit: "macros.js"
+      beforeInit: "docs/macros.js"
       chakra: "libs/remark-latest.min.js"
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -121,7 +122,7 @@ library(knitcitations)
 - Generate LST maps to visualize temperature differences.
 - Compare urban vs. rural areas.
 - Use NDVI (from OLI Bands 4 & 5) to correlate vegetation with lower temperatures.
-- Identify UHI “hot spots” within cities.
+- Identify UHI "hot spots" within cities.
 
 ![LST Map Example](img/ST_Yellowstone.jpg)
 .center[LST map example – Credit: `r Citet(myBib, "LandsatCollection22024")`]
@@ -210,9 +211,9 @@ library(knitcitations)
 <!-- Slide 9: Personal Reflection -->
 # Reflection
 
-.pull-left[Working with Landsat 8’s TIRS has been really fun! Landsat 8, launched in 2013, carries foward a fascinating history of Earth observation. I was impressed by how its advanced thermal sensors, with dual thermal bands and 12-bit radiometric resolution, can capture even subtle differences in surface temperatures helping tackling UHI.
+.pull-left[Working with Landsat 8's TIRS has been really fun! Landsat 8, launched in 2013, carries foward a fascinating history of Earth observation. I was impressed by how its advanced thermal sensors, with dual thermal bands and 12-bit radiometric resolution, can capture even subtle differences in surface temperatures helping tackling UHI.
 
-The continuity of Landsat data over more than 40 years offers a unique perspective on how cities have grown and how environmental challenges have evolved. It’s fascinating to think that today’s high-quality thermal imagery is built upon decades of past missions, each contributing to our collective understanding of Earth’s surface.]
+The continuity of Landsat data over more than 40 years offers a unique perspective on how cities have grown and how environmental challenges have evolved. It's fascinating to think that today's high-quality thermal imagery is built upon decades of past missions, each contributing to our collective understanding of Earth's surface.]
 
 
 .pull-right[![Summer Heat Spots with Landsat-8 Thermal Satellite data](img/london_heat.png)
